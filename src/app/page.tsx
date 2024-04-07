@@ -1,8 +1,11 @@
+import BoardTasks from "./components/BoardTasks";
+import Sidebar from "./components/Sidebar";
 
 export default function Home() {
   return (
-    <main >
-      <h1>Home</h1>
+    <main className="flex h-full" >
+      <Sidebar />
+      <BoardTasks />
     </main>
   );
 }

@@ -17,8 +17,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={pjs.className}>
+    <html lang="en" className={pjs.className}>
+      <body className='pb-24 h-screen overflow-hidden'>
       <Providers>
         <Navbar />
         {children}
