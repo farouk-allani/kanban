@@ -3,7 +3,7 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
- // Paste your Firebase config here
+    projectId: "kanban-a80ed"
 };
 
 // Initialize Firebase
