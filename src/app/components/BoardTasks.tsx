@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useFetchDataFromDbQuery } from "... @/components/redux/services/apiSlice";
 import { useAppSelector } from "... @/components/redux/hooks";
-import { getCurrentBoardName } from "... @/components/redux/features/appSlice";
+import { getCurrentBoardName, openAddAndEditBoardModal } from "... @/components/redux/features/appSlice";
 import { MdEdit, MdDelete } from "react-icons/md";
+import { useAppDispatch } from '... @/components/redux/hooks'
 
 // Define types for the tasks data
 interface ITask {
@@ -26,6 +27,8 @@ export default function BoardTasks() {
   const [columns, setColumns] = useState<Column[]>([]);
   // Get active board name from the redux store
   const activeBoard = useAppSelector(getCurrentBoardName);
+
+  const dispatch=useAppDispatch()
 
   // Once data fetches successfully, this function in the useEffect runs
   useEffect(() => {
@@ -89,7 +92,9 @@ export default function BoardTasks() {
               })}
               {/* If the number of columns of tasks is less than 7, display an option to add more columns */}
               {columns.length < 7 ? (
-                <div className="rounded-md bg-white w-[17.5rem] mt-12 shrink-0 flex justify-center items-center">
+                <div className="rounded-md bg-white w-[17.5rem] mt-12 shrink-0 flex justify-center items-center"
+                onClick={() => dispatch(openAddAndEditBoardModal("Edit Board"))}
+                >
                   <p className="cursor-pointer font-bold text-black text-2xl">
                     + New Column
                   </p>
