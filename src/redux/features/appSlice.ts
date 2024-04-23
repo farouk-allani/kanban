@@ -6,6 +6,7 @@ const initialState = {
   currentBoardName: "",
   // Manage the state for opening and closing the Add and Edit Board modal
   isAddAndEditBoardModal: { isOpen: false, variant: "" },
+  isAddAndEditTaskModal: { isOpen: false, variant: "", title: "", index: -1, name: ""},
 };
 
 export const features = createSlice({
