@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import { useFetchDataFromDbQuery } from "... @/components/redux/services/apiSlice";
 import { useAppSelector } from "... @/components/redux/hooks";
-import { getCurrentBoardName, openAddAndEditBoardModal } from "... @/components/redux/features/appSlice";
+import {
+  getCurrentBoardName,
+  openAddAndEditBoardModal,
+  openAddAndEditTaskModal,
+} from "... @/components/redux/features/appSlice";
 import { MdEdit, MdDelete } from "react-icons/md";
-import { useAppDispatch } from '... @/components/redux/hooks'
+import { useAppDispatch } from "... @/components/redux/hooks";
 
 // Define types for the tasks data
 interface ITask {
@@ -28,7 +32,7 @@ export default function BoardTasks() {
   // Get active board name from the redux store
   const activeBoard = useAppSelector(getCurrentBoardName);
 
-  const dispatch=useAppDispatch()
+  const dispatch = useAppDispatch();
 
   // Once data fetches successfully, this function in the useEffect runs
   useEffect(() => {
@@ -51,7 +55,9 @@ export default function BoardTasks() {
     <div className="overflow-x-auto overflow-y-auto w-full p-6 bg-stone-200">
       {/* If data has not been fetched successfully, display a loading state, else display the column of tasks */}
       {isLoading ? (
-        <p className="text-3xl w-full text-center font-bold">Loading tasks...</p>
+        <p className="text-3xl w-full text-center font-bold">
+          Loading tasks...
+        </p>
       ) : (
         <>
           {/* If columns of tasks isn't empty: display the tasks, else display the prompt to add a new column */}
@@ -78,7 +84,18 @@ export default function BoardTasks() {
                             >
                               <p>{title}</p>
                               <div className="flex items-center space-x-1">
-                                <MdEdit className="text-lg cursor-pointer" />
+                                <MdEdit
+                                  className="text-lg cursor-pointer"
+                                  onClick={() =>
+                                    dispatch(
+                                      openAddAndEditTaskModal({
+                                        variant: "Edit Task",
+                                        title,
+                                        name,
+                                      })
+                                    )
+                                  }
+                                />
                                 <MdDelete className="text-lg cursor-pointer text-red-500" />
                               </div>
                             </div>
@@ -92,8 +109,11 @@ export default function BoardTasks() {
               })}
               {/* If the number of columns of tasks is less than 7, display an option to add more columns */}
               {columns.length < 7 ? (
-                <div className="rounded-md bg-white w-[17.5rem] mt-12 shrink-0 flex justify-center items-center"
-                onClick={() => dispatch(openAddAndEditBoardModal("Edit Board"))}
+                <div
+                  className="rounded-md bg-white w-[17.5rem] mt-12 shrink-0 flex justify-center items-center"
+                  onClick={() =>
+                    dispatch(openAddAndEditBoardModal("Edit Board"))
+                  }
                 >
                   <p className="cursor-pointer font-bold text-black text-2xl">
                     + New Column
