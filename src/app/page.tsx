@@ -11,6 +11,7 @@ import { getSession } from "next-auth/react";
 // Import data from data.json, used to initialize the Firestore database for new users
 import { data } from "./utils/data";
 import AddAndEditBoardModal from "./components/AddAndEditBoardModal";
+import AddOrEditTaskModal from "./components/AddOrEditTaskModal";
 
 export default function Home() {
   // Manage user details in this state. Key index in TypeScript ensures type safety.
@@ -62,6 +63,7 @@ export default function Home() {
       <Sidebar />
       <BoardTasks />
       <AddAndEditBoardModal />
+      <AddOrEditTaskModal />
     </main>
   );
 }
