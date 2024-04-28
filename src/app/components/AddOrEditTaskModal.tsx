@@ -256,79 +256,80 @@ export default function AddOrEditTaskModal() {
         }
       }
     }
-    return (
-        <Modal isOpen={isModalOpen} onRequestClose={closeModal}>
-          <ModalBody>
-            <p className="font-bold text-lg">{modalVariant}</p>
-            <div className="py-6">
-              <div>
-                <label htmlFor="title" className="text-sm">
-                  Title
-                </label>
-                <div className="pt-2">
-                  <input
-                    id="title"
-                    className={`${
-                      isTaskTitleEmpty ? "border-red-500" : "border-stone-200"
-                    } border w-full p-2 rounded text-sm cursor-pointer focus:outline-none`}
-                    placeholder="Name"
-                    value={taskData?.title}
-                    onChange={handleTaskTitleChange}
-                  />
-                </div>
-                {isTaskTitleEmpty ? (
-                  <p className="text-xs text-red-500">Task title cannot be empty</p>
-                ) : (
-                  ""
-                )}
-              </div>
     
-              <div className="mt-3">
-                <label htmlFor="status" className="text-sm">
-                  Status
-                </label>
-                <div className="pt-2">
-                  <input
-                    id="status"
-                    className={`${
-                      isTaskStatusEmpty || !statusExists
-                        ? "border-red-500"
-                        : "border-stone-200"
-                    } border w-full p-2 rounded text-sm cursor-pointer focus:outline-none`}
-                    placeholder={columnNames?.join(", ")}
-                    value={taskData?.status}
-                    onChange={handleTaskStatusChange}
-                  />
-                </div>
-                {isTaskStatusEmpty ? (
-                  <p className="text-xs text-red-500">
-                    Task status cannot be empty
-                  </p>
-                ) : !statusExists ? (
-                  <p className="text-xs text-red-500">Column does not exist</p>
-                ) : (
-                  ""
-                )}
-              </div>
-              <div className="pt-6">
-                <button
-                  type="submit"
-                  onClick={(e: React.FormEvent<HTMLButtonElement>) => {
-                    // function to run depending on the variant of the modals
-                    isVariantAdd ? handleAddNewTaskToDb(e) : handleEditTaskToDb(e);
-                  }}
-                  className="bg-blue-500 rounded-3xl py-2 w-full text-sm font-bold"
-                >
-                  <p>
-                    {isLoading
-                      ? "Loading"
-                      : `${isVariantAdd ? "Create Task" : "Save Changes"}`}
-                  </p>
-                </button>
-              </div>
-            </div>
-          </ModalBody>
-        </Modal>
-      );
   };
+  return (
+    <Modal isOpen={isModalOpen} onRequestClose={closeModal}>
+      <ModalBody>
+        <p className="font-bold text-lg">{modalVariant}</p>
+        <div className="py-6">
+          <div>
+            <label htmlFor="title" className="text-sm">
+              Title
+            </label>
+            <div className="pt-2">
+              <input
+                id="title"
+                className={`${
+                  isTaskTitleEmpty ? "border-red-500" : "border-stone-200"
+                } border w-full p-2 rounded text-sm cursor-pointer focus:outline-none`}
+                placeholder="Name"
+                value={taskData?.title}
+                onChange={handleTaskTitleChange}
+              />
+            </div>
+            {isTaskTitleEmpty ? (
+              <p className="text-xs text-red-500">Task title cannot be empty</p>
+            ) : (
+              ""
+            )}
+          </div>
+
+          <div className="mt-3">
+            <label htmlFor="status" className="text-sm">
+              Status
+            </label>
+            <div className="pt-2">
+              <input
+                id="status"
+                className={`${
+                  isTaskStatusEmpty || !statusExists
+                    ? "border-red-500"
+                    : "border-stone-200"
+                } border w-full p-2 rounded text-sm cursor-pointer focus:outline-none`}
+                placeholder={columnNames?.join(", ")}
+                value={taskData?.status}
+                onChange={handleTaskStatusChange}
+              />
+            </div>
+            {isTaskStatusEmpty ? (
+              <p className="text-xs text-red-500">
+                Task status cannot be empty
+              </p>
+            ) : !statusExists ? (
+              <p className="text-xs text-red-500">Column does not exist</p>
+            ) : (
+              ""
+            )}
+          </div>
+          <div className="pt-6">
+            <button
+              type="submit"
+              onClick={(e: React.FormEvent<HTMLButtonElement>) => {
+                // function to run depending on the variant of the modals
+                isVariantAdd ? handleAddNewTaskToDb(e) : handleEditTaskToDb(e);
+              }}
+              className="bg-blue-500 rounded-3xl py-2 w-full text-sm font-bold"
+            >
+              <p>
+                {isLoading
+                  ? "Loading"
+                  : `${isVariantAdd ? "Create Task" : "Save Changes"}`}
+              </p>
+            </button>
+          </div>
+        </div>
+      </ModalBody>
+    </Modal>
+  );
 }
