@@ -13,6 +13,7 @@ const initialState = {
     index: -1,
     name: "",
   },
+  isDeleteBoardAndTaskModal: { isOpen: false, variant: "",  title:'', status: "", index: -1 },
 };
 
 export const features = createSlice({
