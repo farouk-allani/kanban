@@ -5,6 +5,7 @@ import {
   getCurrentBoardName,
   openAddAndEditBoardModal,
   openAddAndEditTaskModal,
+  openDeleteBoardAndTaskModal,
 } from "... @/components/redux/features/appSlice";
 import { MdEdit, MdDelete } from "react-icons/md";
 import { useAppDispatch } from "... @/components/redux/hooks";
@@ -96,7 +97,17 @@ export default function BoardTasks() {
                                     )
                                   }
                                 />
-                                <MdDelete className="text-lg cursor-pointer text-red-500" />
+                                <MdDelete className="text-lg cursor-pointer text-red-500"
+                                 onClick={() =>
+                                  dispatch(
+                                     openDeleteBoardAndTaskModal({
+                                        variant: "Delete this Task?",
+                                        status,
+                                        title,
+                                     }),
+                                  )
+                               }
+                                />
                               </div>
                             </div>
                           );
