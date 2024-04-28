@@ -56,6 +56,22 @@ export const features = createSlice({
       state.isAddAndEditTaskModal.index = -1;
       state.isAddAndEditTaskModal.name = "";
     },
+     // Open the delete board and task modal with a specified variant (delete board or task)
+   openDeleteBoardAndTaskModal: (state, { payload }) => {
+    state.isDeleteBoardAndTaskModal.isOpen = true;
+    state.isDeleteBoardAndTaskModal.variant = payload.variant;
+  state.isDeleteBoardAndTaskModal.title = payload.title;
+    state.isDeleteBoardAndTaskModal.status = payload.status;
+    state.isDeleteBoardAndTaskModal.index = payload.index;
+  },
+ // Close the delete board and task modal
+ closeDeleteBoardAndTaskModal: (state) => {
+    state.isDeleteBoardAndTaskModal.isOpen = false;
+    state.isDeleteBoardAndTaskModal.variant = "";
+  state.isDeleteBoardAndTaskModal.title = "";
+    state.isDeleteBoardAndTaskModal.status = "";
+    state.isDeleteBoardAndTaskModal.index = -1;
+  },
   },
 });
 
