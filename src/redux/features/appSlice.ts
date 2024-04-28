@@ -83,7 +83,19 @@ export const {
   closeAddAndEditBoardModal,
   openAddAndEditTaskModal,
   closeAddAndEditTaskModal,
+  openDeleteBoardAndTaskModal,
+   closeDeleteBoardAndTaskModal,
 } = features.actions;
+ // Delete task and board
+ export const getDeleteBoardAndTaskModalValue = (state: RootState) => state.features.isDeleteBoardAndTaskModal.isOpen;
+ // Selector function to retrieve variant state value 
+ export const getDeleteBoardAndTaskModalVariantValue = (state: RootState) => state.features.isDeleteBoardAndTaskModal.variant;
+ // Selector function to retrieve title state value 
+ export const getDeleteBoardAndTaskModalTitle = (state: RootState) => state.features.isDeleteBoardAndTaskModal.title;
+ // Selector function to retrieve status state value
+ export const getDeleteBoardAndTaskModalStatus = (state: RootState) => state.features.isDeleteBoardAndTaskModal.status;
+ // Selector function to retrieve index state value
+ export const getDeleteBoardAndTaskModalIndex = (state: RootState) => state.features.isDeleteBoardAndTaskModal.index;
 export const getCurrentBoardName = (state: RootState) =>
   state.features.currentBoardName;
 // Selector function to retrieve isOpen state value  
