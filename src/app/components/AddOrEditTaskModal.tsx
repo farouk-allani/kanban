@@ -6,11 +6,11 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 import {
  getAddAndEditTaskModalValue,
  getAddAndEditTaskModalVariantValue,
- getAddAndEditTaskModalTitle,
+ getAddAndEditTaskModalTitleValue,
  closeAddAndEditTaskModal,
  getCurrentBoardName,
- getAddAndEditTaskModalIndex,
- getAddAndEditTaskModalName,
+ getAddAndEditTaskModalIndexValue,
+ getAddAndEditTaskModalNameValue,
 } from "../../redux/features/appSlice"
 import {
  useFetchDataFromDbQuery,
@@ -46,9 +46,9 @@ export default function AddOrEditTaskModal() {
     const closeModal = () => dispatch(closeAddAndEditTaskModal());
     const currentBoardTitle = useAppSelector(getCurrentBoardName);
     // get task title, index and name from redux store
-    const currentTaskTitle = useAppSelector(getAddAndEditTaskModalTitle);
-    const currentTaskIndex = useAppSelector(getAddAndEditTaskModalIndex);
-    const initialTaskColumn = useAppSelector(getAddAndEditTaskModalName);
+    const currentTaskTitle = useAppSelector(getAddAndEditTaskModalTitleValue);
+    const currentTaskIndex = useAppSelector(getAddAndEditTaskModalIndexValue);
+    const initialTaskColumn = useAppSelector(getAddAndEditTaskModalNameValue);
      // Effect to set initial data for the modal based on the variant
   useEffect(() => {
     if (data) {
