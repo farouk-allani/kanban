@@ -1,4 +1,8 @@
-import { useEffect, useState } from "react";
+//import useRef hook
+import { useEffect, useState, useRef } from "react";
+import { DragDropContext, Draggable } from "react-beautiful-dnd";
+// import Droppable from the custom hook
+import { StrictModeDroppable as Droppable } from "./StrictModeDroppable";
 import { useFetchDataFromDbQuery } from "... @/components/redux/services/apiSlice";
 import { useAppSelector } from "... @/components/redux/hooks";
 import {
