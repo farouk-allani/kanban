@@ -66,11 +66,6 @@ export default function Home() {
       <AddAndEditBoardModal />
       <AddOrEditTaskModal />
       <DeleteBoardAndTaskModal/>
-      
-      
-      
-      
-      
     </main>
   );
 }
